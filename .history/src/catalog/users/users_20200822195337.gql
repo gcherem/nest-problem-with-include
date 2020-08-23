@@ -1,0 +1,26 @@
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  password: String!
+  # account: Account!
+}
+
+type Query {
+  user(id: ID!): User!
+  users(skip: Int = 0, take: Int = 25): [User!]!
+}
+
+type Mutation {
+  addUser(newUserInput: NewUserInput!): User!
+  removeUser(id: ID!): Boolean!
+}
+
+input NewUserInput {
+  name: String!
+  email: String!
+}
+
+type Subscription {
+  userAdded: User!
+}
